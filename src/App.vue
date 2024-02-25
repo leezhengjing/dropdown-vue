@@ -29,7 +29,7 @@ const mockSearchResults = [
   { label: 'Zucchini' },
   {
     "id": 1,
-    "name": "John",
+    "label": "John",
     "age": 30,
     "address": {
       "street": "123 Main St",
@@ -74,7 +74,7 @@ const mockSearchResults = [
   },
   {
     "id": 2,
-    "name": "Jane",
+    "label": "Jane",
     "age": 25,
     "address": {
       "street": "456 Elm St",
@@ -110,8 +110,9 @@ const mockSearchResults = [
 <template>
   <div class="bg-gray-100 flex items-center justify-center w-screen min-h-screen min-w-full">
     <div class="flex flex-col">
-      <Dropdown label="Search" :options="mockSearchResults" filterKey="name" :isAsync="true" />
+      <Dropdown label="Async Search" :options="mockSearchResults" filterKey="label" :isAsync="true" />
       <!-- <Dropdown /> -->
+      <Dropdown label="Sync Search" :options="mockSearchResults" filterKey="label" :isAsync="false" />
     </div>
   </div>
 </template>
