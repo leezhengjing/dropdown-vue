@@ -26,14 +26,6 @@ const props = defineProps({
         type: Function,
         default: (value: string) => value,
     },
-    searchOnFocus: {
-        type: Boolean,
-        default: true,
-    },
-    disabled: {
-        type: Boolean,
-        default: false,
-    },
 });
 
 const searchQuery = ref('');
@@ -51,7 +43,7 @@ const performSearch = props.isAsync ? debounce(async () => {
         await new Promise(resolve => setTimeout(resolve, 1000));
         // Perform search and update selectedOptions
         selectedOptions.value = options.value.filter(option =>
-            deepSearch(option, searchQuery.value)
+            deepSearch(option, props.transformFunction(searchQuery.value))
         );
     } catch (error) {
         console.error('Error performing search:', error);
@@ -63,7 +55,7 @@ const performSearch = props.isAsync ? debounce(async () => {
     try {
         // Perform search and update selectedOptions
         selectedOptions.value = options.value.filter(option =>
-            deepSearch(option, searchQuery.value)
+            deepSearch(option, props.transformFunction(searchQuery.value))
         );
     } catch (error) {
         console.error('Error performing search:', error);

@@ -85,7 +85,7 @@ const mockSearchResults = [
     "contacts": [
       {
         "type": "email",
-        "value": "john@example.com" // This should be
+        "value": "jane@example.com" // This should be
       },
       {
         "type": "phone",
